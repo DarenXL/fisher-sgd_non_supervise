@@ -97,4 +97,4 @@ for name, desc in PLOTS.items():
                 ax.set_xlabel("iterations")
 
     fig.show()
-    fig.savefig(f"{name}.pdf")
+    fig.savefig(f"outputs/{name}.pdf")

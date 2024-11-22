@@ -81,8 +81,8 @@ def _res(pklfile):
 
 
 print("SBM 100")
-_res("sbm_100.pkl.gz")
+_res("outputs/sbm_100_small.pkl.gz")
 
 print("\n\n\n")
 print("SBM 200")
-_res("sbm_200.pkl.gz")
+_res("outputs/sbm_200_small.pkl.gz")
