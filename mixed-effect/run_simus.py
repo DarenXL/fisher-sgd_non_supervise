@@ -26,8 +26,8 @@ theta0 = model.parametrization.params_to_reals1d(
     var_residual=100,
 )
 
-Nsimus = 1
-n = 1000
+Nsimus = 50
+n = 100
 keyy = 0
 many_res = list(
     tqdm(
@@ -40,7 +40,7 @@ many_res = list(
     )
 )
 
-with open('example_res.npy', 'wb') as f:
+with open('outputs/example_res.npy', 'wb') as f:
     pickle.dump(many_res[0],f)
 
 
@@ -48,9 +48,9 @@ theta = jnp.array([t for t in ((x.theta) for x in many_res)])
 fim = jnp.array([f for f in (x.fisher_info_mat for x in many_res)])
     
     
-with open('theta_all_%s.npy' % keyy, 'wb') as f:
+with open('outputs/theta_all_%s.npy' % keyy, 'wb') as f:
     jnp.save(f, theta)
     
-with open('fim_all_%s.npy' % keyy, 'wb') as f:
+with open('outputs/fim_all_%s.npy' % keyy, 'wb') as f:
     jnp.save(f, fim)
 

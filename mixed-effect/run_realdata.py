@@ -13,7 +13,7 @@ def vect_params(p):
     
 
 # Import and clean file to use only on the white-browed coucals    
-y_pd = pd.read_csv('growth_coucal.csv')
+y_pd = pd.read_csv('data/growth_coucal.csv')
 df = pd.DataFrame(y_pd)
 df = df[["nestling_ID2_cat","species","weight","age"]]
 df = df.dropna()
@@ -28,7 +28,7 @@ fig, ax = plt.subplots(figsize=(6,5))
 df_wbc.groupby('nestling_ID2_cat').plot(x='age',y='weight',ax=ax,legend=False)
 ax.set_xlabel("days (from hatching)")
 ax.set_ylabel("body weight (g)")
-fig.savefig('real_data_coucal_wbc.pdf',dpi=300)
+fig.savefig('outputs/real_data_coucal_wbc.pdf',dpi=300)
 
 
 # Get data dimension
@@ -83,6 +83,6 @@ for i in range(evol_p.shape[1]):
 
 fig.tight_layout()
 fig.show()
-fig.savefig('evol_theta_real_data_coucal_wbc.pdf',dpi=300)
+fig.savefig('outputs/evol_theta_real_data_coucal_wbc.pdf',dpi=300)
 
 

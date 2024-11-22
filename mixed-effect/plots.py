@@ -19,8 +19,8 @@ theta0 = model.parametrization.params_to_reals1d(
 p0 = model.parametrization.reals1d_to_params(theta0)
 p0_vec = vect_params(p0)
 
-with open("example_res.npy", 'rb') as f:
-     ex_res = pickle.load(f)
+with open("outputs/example_res.npy", 'rb') as f:
+    ex_res = pickle.load(f)
 
 evol_p = np.zeros(shape=(ex_res.evol_theta.shape[0],p0_vec.size))
 for i in range(evol_p.shape[0]):
@@ -51,7 +51,7 @@ for i in range(evol_p.shape[1]):
 
 fig.show()
 
-fig.savefig('plots/evol_log_p_5000.pdf',dpi=300)
+fig.savefig('outputs/evol_log_p_5000.pdf',dpi=300)
 
 
 fig, ax = plt.subplots(nrows=3, ncols=3, sharex=True, sharey=False, figsize=(10,8))
@@ -70,4 +70,4 @@ for i in range(evol_p.shape[1]):
 fig.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
 fig.show()
 
-fig.savefig('plots/evol_fim_with_factor_5000.pdf',dpi=300)
+fig.savefig('outputs/evol_fim_with_factor_5000.pdf',dpi=300)

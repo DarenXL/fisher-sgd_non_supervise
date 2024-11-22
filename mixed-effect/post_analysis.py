@@ -6,10 +6,10 @@ import jax
 
 import parametrization_cookbook.jax as pc
 
-with open('theta_all.npy', 'rb') as f:
+with open('outputs/theta_all_0.npy', 'rb') as f:
     theta = jnp.load(f)
     
-with open('fim_all.npy', 'rb') as f:
+with open('outputs/fim_all_0.npy', 'rb') as f:
     fim = jnp.load(f)
      
 

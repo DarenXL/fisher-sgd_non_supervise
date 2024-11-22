@@ -61,11 +61,11 @@ for (i in 1:length(lf)){
   ci_upper[i,] <- theta[i,] + qnorm(0.975) * sqrt(diag(solve(fim[[i]])))
 }
 
-saveRDS(theta,"theta.rds")
-saveRDS(fim,"fim.rds")
-saveRDS(quadform,"quadform.rds")
-saveRDS(ci_lower,"ci_lower.rds")
-saveRDS(ci_upper,"ci_upper.rds")
+saveRDS(theta,"outputs/theta.rds")
+saveRDS(fim,"outputs/fim.rds")
+saveRDS(quadform,"outputs/quadform.rds")
+saveRDS(ci_lower,"outputs/ci_lower.rds")
+saveRDS(ci_upper,"outputs/ci_upper.rds")
 
 # RMSE
 theta0mat <- matrix(theta0, nr=1000, nc=7, byrow = T)
