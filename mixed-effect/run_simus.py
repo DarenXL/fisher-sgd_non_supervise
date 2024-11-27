@@ -26,8 +26,8 @@ theta0 = model.parametrization.params_to_reals1d(
     var_residual=100,
 )
 
-Nsimus = 50
-n = 100
+Nsimus = 400
+n = 1000
 keyy = 0
 many_res = list(
     tqdm(
@@ -46,11 +46,27 @@ with open('outputs/example_res.npy', 'wb') as f:
 
 theta = jnp.array([t for t in ((x.theta) for x in many_res)])
 fim = jnp.array([f for f in (x.fisher_info_mat for x in many_res)])
-    
+
+theta_no_nan = []
+for t in ((x.theta) for x in many_res):
+    if not(sum(jnp.isnan(t))) :
+        theta_no_nan += [t]
+theta_no_nan = jnp.array(theta_no_nan)
+
+fim_no_nan = []
+for f in ((x.fisher_info_mat) for x in many_res):
+    if not(jnp.sum(jnp.isnan(f))) :
+        fim_no_nan += [f]
+fim_no_nan = jnp.array(fim_no_nan)
     
 with open('outputs/theta_all_%s.npy' % keyy, 'wb') as f:
     jnp.save(f, theta)
+
+with open('outputs/theta_no_nan_all_%s.npy' % keyy, 'wb') as f:
+    jnp.save(f, theta_no_nan)
     
 with open('outputs/fim_all_%s.npy' % keyy, 'wb') as f:
     jnp.save(f, fim)
 
+with open('outputs/fim_no_nan_all_%s.npy' % keyy, 'wb') as f:
+    jnp.save(f, fim_no_nan)
