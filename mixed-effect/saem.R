@@ -31,7 +31,8 @@ theta0 <- c(200,500,150,40,0,100,100)
 
 il <- lower.tri(matrix(1,nr=2,nc=2),diag = TRUE)
 
-lf <- list.files('data/',pattern='y', full.names = TRUE)
+N <- 25 # 1000
+lf <- list.files('data/',pattern='y', full.names = TRUE)[1:N]
 theta <- matrix(0,nr=length(lf),nc=7)
 fim <- list()
 quadform <- rep(0,length(lf))
@@ -68,11 +69,11 @@ saveRDS(ci_lower,"outputs/ci_lower.rds")
 saveRDS(ci_upper,"outputs/ci_upper.rds")
 
 # RMSE
-theta0mat <- matrix(theta0, nr=1000, nc=7, byrow = T)
+theta0mat <- matrix(theta0, nr=N, nc=7, byrow = T)
 mse <- apply((theta - theta0mat),2,mean)^2 + apply(theta,2,var)
 rmse <- sqrt(mse)
 
-mse_global <- mean(sapply(1:1000,FUN=function(i){sum((theta[i,]-theta0)^2)}))
+mse_global <- mean(sapply(1:N,FUN=function(i){sum((theta[i,]-theta0)^2)}))
 rmse_global <- sqrt(mse_global)
 
 # Empirical coverage

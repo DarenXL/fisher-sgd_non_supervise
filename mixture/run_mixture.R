@@ -1,1 +1,0 @@
-# Faire un fichier qui lance plusieurs fois le fisher-SGD et Rmixmod (et blockmodels ?) sur cas gaussiens
