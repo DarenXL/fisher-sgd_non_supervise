@@ -125,7 +125,7 @@ res.pi <- matrix(rep(0,3*N),N,3)
 res.mu <- matrix(rep(0,3*N),N,3)
 res.std <- matrix(rep(0,3*N),N,3)
 
-strat <- mixmodStrategy(algo =  c("SEM"), initMethod = "random", nbTry = 10, epsilonInInit = 0.00001)
+strat <- mixmodStrategy(algo =  c("SEM"), initMethod = "random", nbTry = 10)
 mod <- mixmodGaussianModel(family =  "spherical")
 
 for(i in 1:N){
