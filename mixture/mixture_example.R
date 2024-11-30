@@ -14,18 +14,18 @@ set.seed(seed)
 n <- 1000
 
 # proportions de chaque classe
-p1 <- .3
-p2 <- .1
-p3 <- .6
+p1 <- 1./5
+p2 <- 7./15
+p3 <- 1./3
 
 # esperances
-u1 <- -2
-u2 <- 0
-u3 <- 2
+u1 <- -6.
+u2 <- -1.
+u3 <- 3.
 
 # ecart type (identique sur les trois classes)
-std1 <- .5
-std2 <- .5
+std1 <- 1.25
+std2 <- 1.
 std3 <- .5
 
 # --- visualisation de la distribution des données et densités théoriques
