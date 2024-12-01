@@ -28,28 +28,6 @@ std1 <- 1.25
 std2 <- 1.
 std3 <- .5
 
-# --- visualisation de la distribution des données et densités théoriques
-
-# graphics.off()
-default_plot <- function(){
-  hist(X, breaks=100, xlab="X", main="Modeles de melange", freq=FALSE, col="whitesmoke", border="lightgrey")                 # données non labelisées
-
-  # densités du mélange
-  x <- seq(-5, 5, length=100)
-  lines(x, lwd=5, dnorm(x, mean = u1, sd = std1)*p1, col='salmon', type='l')
-  lines(x, lwd=5, dnorm(x, mean = u2, sd = std2)*p2, col='limegreen', type='l')
-  lines(x, lwd=5, dnorm(x, mean = u3, sd = std3)*p3, col='lightskyblue', type='l')
-
-  # densité du mélange
-  lines(x, lwd=3,
-        dnorm(x, mean = u1, sd = std1)*p1 +
-        dnorm(x, mean = u2, sd = std2)*p2 +
-        dnorm(x, mean = u3, sd = std3)*p3
-    , col='black', type='l')
-}
-
-default_plot()
-
 #' ******************************
 #' *                            *
 #' *      Exemple Rmixmod       *
@@ -67,6 +45,29 @@ length(X1); length(X2); length(X3)
 length(X1) + length(X2) + length(X3)
 
 X <- sample(c(X1, X2, X3)) # mélange de toutes les données
+
+# --- visualisation de la distribution des données et densités théoriques
+
+x <- seq(-10, 5, length=100)
+
+# graphics.off()
+default_plot <- function(){
+  hist(X, breaks=100, xlab="X", main="Modeles de melange", freq=FALSE, col="whitesmoke", border="lightgrey")                 # données non labelisées
+
+  # densités du mélange
+  lines(x, lwd=5, dnorm(x, mean = u1, sd = std1)*p1, col='salmon', type='l')
+  lines(x, lwd=5, dnorm(x, mean = u2, sd = std2)*p2, col='limegreen', type='l')
+  lines(x, lwd=5, dnorm(x, mean = u3, sd = std3)*p3, col='lightskyblue', type='l')
+
+  # densité du mélange
+  lines(x, lwd=3,
+        dnorm(x, mean = u1, sd = std1)*p1 +
+        dnorm(x, mean = u2, sd = std2)*p2 +
+        dnorm(x, mean = u3, sd = std3)*p3
+    , col='black', type='l')
+}
+
+default_plot()
 
 # --- Algo
 
@@ -167,9 +168,18 @@ apply(res.mu, 2, mean)
 apply(res.std, 2, mean)
 
 # RMSE
-sum((res.mu - matrix(rep(c(u1,u2,u3),N),N,3, byrow=TRUE))^2)
-sum((res.std - matrix(rep(c(std1,std2,std3),N),N,3, byrow=TRUE))^2)
-sum((res.pi - matrix(rep(c(p1,p2,p3),N),N,3, byrow=TRUE))^2)
+sqrt(mean((res.mu[,1] - rep(u1,N))^2))
+sqrt(mean((res.mu[,2] - rep(u2,N))^2))
+sqrt(mean((res.mu[,3] - rep(u3,N))^2))
+
+sqrt(mean((res.std[,1] - rep(std1,N))^2))
+sqrt(mean((res.std[,2] - rep(std2,N))^2))
+sqrt(mean((res.std[,3] - rep(std3,N))^2))
+
+sqrt(mean((res.pi[,1] - rep(p1,N))^2))
+sqrt(mean((res.pi[,2] - rep(p2,N))^2))
+sqrt(mean((res.pi[,3] - rep(p3,N))^2))
+
 
 
 
