@@ -29,4 +29,4 @@ Comparaison avec les méthodes EM fournies par Rmixmod et les algorithmes de des
 
 *[1] Charlotte Baey, Maud Delattre, Estelle Kuhn, Jean-Benoist Leger, and
 Sarah Lemler. Efficient preconditioned stochastic gradient descent for es-
-timation in latent variable models. June 2023.*
+timation in latent variable models. June 2023.* https://arxiv.org/pdf/2306.12841
